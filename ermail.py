@@ -52,7 +52,10 @@ with session() as c:
 				foodPage=requests.get(finalUrl, headers={"Referer":j.contents[0]['href'], "Accept":"text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8", "User-Agent":"Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:20.0) Gecko/20100101 Firefox/20.0" });
 				continue
 			lulz = lol.find('a') #lol.findAll
-			finalUrl = FoodSoup('a', target="_blank")[0]['href']
+			try:
+				finalUrl = FoodSoup('a', target="_blank")[0]['href']
+			except:
+				finalUrl = FoodSoup('a')[0]['href']
 			foodPage=requests.get(finalUrl, headers={"Referer":j.contents[0]['href'], "Accept":"text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8", "User-Agent":"Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:20.0) Gecko/20100101 Firefox/20.0" });
 
 print 'No more emails to read'
